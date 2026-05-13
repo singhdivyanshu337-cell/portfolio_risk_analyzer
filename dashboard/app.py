@@ -190,35 +190,13 @@ if analyze_button:
         )
 
         # -----------------------------------
-        # PORTFOLIO METRICS
-        # -----------------------------------
-        expected_return = portfolio_return(
-            weights,
-            mean_returns
-        )
-
-        variance = portfolio_variance(
-            weights,
-            covariance_matrix
-        )
-
-        volatility = portfolio_volatility(
-            weights,
-            covariance_matrix
-        )
-
-        sharpe = sharpe_ratio(
-            expected_return,
-            volatility
-        )
-
-        # -----------------------------------
         # RANDOM PORTFOLIOS
         # -----------------------------------
         results = generate_random_portfolios(
             mean_returns,
             covariance_matrix,
-            num_portfolios
+            risk_free_rate=risk_free_rate,
+            num_portfolios=num_portfolios
         )
 
         # -----------------------------------
@@ -250,6 +228,24 @@ if analyze_button:
         ]
 
         # -----------------------------------
+        # PORTFOLIO METRICS
+        # -----------------------------------
+        expected_return = portfolio_return(
+            best_weights,
+            mean_returns
+        )
+
+        volatility = portfolio_volatility(
+            best_weights,
+            covariance_matrix
+        )
+
+        sharpe = sharpe_ratio(
+            expected_return,
+            volatility
+        )
+
+        # -----------------------------------
         # KPI METRICS
         # -----------------------------------
         st.subheader("📌 Portfolio Overview")
@@ -259,13 +255,13 @@ if analyze_button:
         with col1:
             st.metric(
                 "Expected Return",
-                f"{expected_return * 252 * 100:.2f}%"
+                f"{expected_return * 100:.2f}%"
             )
 
         with col2:
             st.metric(
                 "Portfolio Risk",
-                f"{volatility * np.sqrt(252) * 100:.2f}%"
+                f"{volatility * 100:.2f}%"
             )
 
         with col3:
