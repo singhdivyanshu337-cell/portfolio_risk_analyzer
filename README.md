@@ -4,7 +4,7 @@ A professional finance and risk analytics project built using Python, Streamlit,
 
 This project helps investors analyze stock portfolios by calculating portfolio risk, expected returns, Sharpe Ratio, portfolio allocation, and efficient frontier optimization using Modern Portfolio Theory.
 
-Designed as an internship-level finance + data analytics project, this application demonstrates practical implementation of:
+Designed as an finance + data analytics project, this application demonstrates practical implementation of:
 
 * Portfolio Optimization
 * Risk Management
